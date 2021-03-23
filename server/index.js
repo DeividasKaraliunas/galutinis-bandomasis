@@ -1,10 +1,13 @@
 const express = require('express');
 const cors = require('cors');
 require('dotenv').config({path:'server/.env'})
+const animalRouter = require('./routers/animals')
 
 const app = express();
 
 app.use(cors());
+
+app.use('/animals', animalRouter);
 
 const {SERVER_PORT} = process.env;
 
