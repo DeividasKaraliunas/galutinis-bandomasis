@@ -26,7 +26,7 @@ server.get('/', (req, res) => {
 })
 
 mongoose.connect(`mongodb+srv://${SERVER_USER}:${SERVER_PASS}@${SERVER_CLUSTER}/${SERVER_NAME}?retryWrites=true&w=majority`,
-    { useNewUrlParser: true })
+    { useNewUrlParser: true, useUnifiedTopology: true })
 
 const db = mongoose.connection;
 
