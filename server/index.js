@@ -3,18 +3,18 @@ const cors = require('cors');
 require('dotenv').config({path:'server/.env'})
 const animalRouter = require('./routers/animals')
 
-const app = express();
+const server = express();
 
-app.use(cors());
+server.use(cors());
 
-app.use('/animals', animalRouter);
+server.use('/animals', animalRouter);
 
 const {SERVER_PORT} = process.env;
 
-app.get('/', (req,res) => {
+server.get('/', (req,res) => {
     res.send('Testing...')
 })
 
-app.listen(SERVER_PORT, () => {
+server.listen(SERVER_PORT, () => {
     console.log(`Server is running on http://localhost:${SERVER_PORT}`)
 });
