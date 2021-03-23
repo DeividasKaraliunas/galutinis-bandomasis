@@ -1,7 +1,7 @@
 const { Router } = require('express');
 
 const {
-    getAnimal,
+    getAnimals,
     postAnimal,
     updateAnimal,
     deleteAnimal
@@ -9,7 +9,7 @@ const {
 
 const router = Router();
 
-router.get('/', getAnimal);
+router.get('/', getAnimals);
 
 router.post('/', postAnimal);
 
