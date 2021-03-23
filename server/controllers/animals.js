@@ -30,7 +30,22 @@ const postAnimal = async (req, res) => {
 };
 
 const updateAnimal = async (req, res) => {
-    res.status(200).json('UPDATE')
+    const { id } = req.params;
+    try {
+        const updatedAnimal = await AnimalModel.findByIdAndUpdate(id, req.body, { new: true });
+        res.status(200).json({
+            animal: {
+                id: updatedAnimal._id,
+                name: updatedAnimal.name,
+                breed: updatedAnimal.breed,
+                weight: updatedAnimal.weight,
+                birthDate: updatedAnimal.birthDate
+            }
+        })
+    } catch (error) {
+        res.status(404).json({ message: error.message })
+    }
+
 };
 
 const deleteAnimal = async (req, res) => {
