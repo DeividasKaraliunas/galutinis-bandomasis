@@ -1,7 +1,7 @@
 const express = require('express');
 const cors = require('cors');
 require('dotenv').config({path:'server/.env'})
-const animalRouter = require('./routers/animals')
+const animalRouter = require('./routes/animals')
 
 const server = express();
 
