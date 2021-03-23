@@ -49,7 +49,22 @@ const updateAnimal = async (req, res) => {
 };
 
 const deleteAnimal = async (req, res) => {
-    res.status(200).json('DELETE')
+    const { id } = req.params;
+    try {
+        const deletedAnimal = await AnimalModel.findByIdAndDelete(id)
+        res.status(200).json({
+            animal: {
+                id: deletedAnimal._id,
+                name: deletedAnimal.name,
+                breed: deletedAnimal.breed,
+                weight: deletedAnimal.weight,
+                birthDate: deletedAnimal.birthDate
+            }
+        });
+    } catch (error) {
+        res.status(200).json({ message: error.message })
+
+    }
 };
 
 module.exports = {
